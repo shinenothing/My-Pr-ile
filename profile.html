@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #232429;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-blur {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: url('https://anhdephd.vn/wp-content/uploads/2022/04/hinh-nen-dong-ngam-sao-bang.gif') no-repeat center center fixed;
+      background-size: cover;
+      filter: brightness(0.8);
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .bg-lines {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .bg-lines svg {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      opacity: 0.15;
+    }
+
+    .profile-canvas {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      padding: 40px 32px 32px 32px;
+      min-width: 400px;
+      max-width: 480px;
+      margin: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 2.5px solid rgba(255,255,255,0.45);
+      box-sizing: border-box;
+      animation: slideDown 0.8s cubic-bezier(.33,1.02,.47,.98);
+      animation-fill-mode: both;
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      background: #eee;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 8px 0 24px 0;
+      color: #fff;
+      text-align: center;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 999px;
+      transition: 0.3s;
+      font-size: 1.1em;
+      font-weight: 500;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 2px 8px #0001;
+    }
+
+    .links a.codeforces {
+      background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+      color: #333;
+    }
+
+    .links a.codeforces:hover {
+      background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
+    }
+
+    .links a.email {
+      background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+    }
+
+    .links a.email:hover {
+      background: linear-gradient(90deg, #ff7eb3 0%, #ff758c 100%);
+    }
+
+    .links a.github {
+      background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    }
+
+    .links a.github:hover {
+      background: linear-gradient(90deg, #414345 0%, #232526 100%);
+    }
+
+    .links a.facebook {
+      background: linear-gradient(90deg, #1877f3 0%, #00c6ff 100%);
+    }
+
+    .links a.facebook:hover {
+      background: linear-gradient(90deg, #00c6ff 0%, #1877f3 100%);
+    }
+
+    .links i {
+      font-size: 1.2em;
+      width: 22px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-blur"></div>
+
+  <div class="bg-lines">
+    <svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+      <g stroke="white" stroke-opacity="0.08" stroke-width="1" fill="none">
+        <!-- Đường chéo từ trên trái xuống dưới phải -->
+        <polyline points="0,0 1920,1080" />
+        <polyline points="0,120 1800,1080" />
+        <polyline points="0,240 1680,1080" />
+        <polyline points="0,360 1560,1080" />
+        <polyline points="0,480 1440,1080" />
+        <polyline points="0,600 1320,1080" />
+        <polyline points="0,720 1200,1080" />
+        <polyline points="0,840 1080,1080" />
+        <polyline points="0,960 960,1080" />
+        <polyline points="0,1080 840,1080" />
+        <!-- Đường chéo từ trên phải xuống dưới trái -->
+        <polyline points="1920,0 0,1080" />
+        <polyline points="1800,0 0,960" />
+        <polyline points="1680,0 0,840" />
+        <polyline points="1560,0 0,720" />
+        <polyline points="1440,0 0,600" />
+        <polyline points="1320,0 0,480" />
+        <polyline points="1200,0 0,360" />
+        <polyline points="1080,0 0,240" />
+        <polyline points="960,0 0,120" />
+        <polyline points="840,0 0,0" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="profile-canvas">
+    <img src="https://cdn.pixabay.com/photo/2023/11/29/17/51/clouds-8420083_1280.jpg" alt="Avatar" class="avatar">
+    <div class="name">Quân Phan</div>
+    <div class="links">
+      <a href="https://codeforces.com/profile/andanh3108" target="_blank" class="codeforces">
+        <i class="fa-solid fa-code"></i> Codeforces
+      </a>
+      <a href="mailto:dangquanphan22@gmail.com" class="email" target="_blank">
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+      <a href="https://github.com/shinenothing" target="_blank" class="github">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://www.facebook.com/anh.quan.phan.989059" target="_blank" class="facebook">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+    </div>
+  </div>
+</body>
+</html>
