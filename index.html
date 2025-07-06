@@ -5,15 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Profile</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Inter:wght@100..900&family=Montserrat:wght@100..900&family=Noto+Serif:wght@100..900&family=Nunito:wght@200..1000&family=Oswald:wght@200..700&family=Raleway:wght@100..900&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       min-height: 100vh;
       margin: 0;
-      padding: 32px;
-      font-family: 'Inter', 'Montserrat', 'Raleway', 'Baloo Bhaijaan 2', 'Noto Serif', 'Oswald', 'Segoe UI', sans-serif;
+      padding: 0;
+      font-family: 'Inter', 'Montserrat', 'Raleway', 'Baloo Bhaijaan 2', 'Noto Serif', 'Oswald', sans-serif;
       color: white;
       display: flex;
       justify-content: center;
@@ -21,7 +24,12 @@
       background: #232429;
       position: relative;
       overflow: hidden;
-      box-sizing: border-box;
+      transition: background 0.3s ease;
+    }
+
+    body.light {
+      background: #f5f5f5;
+      color: #111;
     }
 
     .bg-blur {
@@ -53,24 +61,22 @@
       background: rgba(255, 255, 255, 0.18);
       border-radius: 28px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      padding: 40px 32px;
-      width: 100%;
+      padding: 40px 32px 32px 32px;
+      width: 90vw;
       max-width: 480px;
-      min-width: 260px;
-      margin: auto;
+      min-width: 280px;
+      margin: 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
       z-index: 2;
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border: 2.5px solid rgba(255,255,255,0.45);
-      box-sizing: border-box;
       animation: slideDown 0.8s cubic-bezier(.33,1.02,.47,.98);
       animation-fill-mode: both;
       transform: translateY(-40px);
       opacity: 0;
-      font-family: 'Nunito', 'Inter', 'Montserrat', 'Raleway', 'Baloo Bhaijaan 2', 'Noto Serif', 'Oswald', 'Segoe UI', sans-serif;
+      font-family: 'Nunito', sans-serif;
     }
 
     @keyframes slideDown {
@@ -89,7 +95,6 @@
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #fff;
       margin-bottom: 16px;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
       background: #eee;
@@ -99,7 +104,7 @@
       font-size: 24px;
       font-weight: bold;
       margin: 8px 0 24px 0;
-      color: #fff;
+      color: inherit;
       text-align: center;
     }
 
@@ -123,7 +128,6 @@
       font-size: 1.1em;
       font-weight: 500;
       width: 100%;
-      box-sizing: border-box;
       box-shadow: 0 2px 8px #0001;
     }
 
@@ -132,38 +136,66 @@
       color: #333;
     }
 
-    .links a.codeforces:hover {
-      background: linear-gradient(90deg, #ffd200 0%, #f7971e 100%);
-    }
-
     .links a.email {
       background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
-    }
-
-    .links a.email:hover {
-      background: linear-gradient(90deg, #ff7eb3 0%, #ff758c 100%);
     }
 
     .links a.github {
       background: linear-gradient(90deg, #232526 0%, #414345 100%);
     }
 
-    .links a.github:hover {
-      background: linear-gradient(90deg, #414345 0%, #232526 100%);
-    }
-
     .links a.facebook {
       background: linear-gradient(90deg, #1877f3 0%, #00c6ff 100%);
     }
 
-    .links a.facebook:hover {
-      background: linear-gradient(90deg, #00c6ff 0%, #1877f3 100%);
+    .links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .links i {
-      font-size: 1.2em;
-      width: 22px;
-      text-align: center;
+    .toggle-mode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 99;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .toggle-mode:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    .material-symbols-outlined {
+      font-size: 24px;
+      color: white;
+      transition: color 0.3s, transform 0.4s ease;
+    }
+
+    body.light .material-symbols-outlined {
+      color: #111;
+      transform: rotate(180deg);
+    }
+
+    body.light .profile-canvas {
+      background: rgba(255, 255, 255, 0.7);
+      color: #111;
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    body.light .links a {
+      color: white;
     }
   </style>
 </head>
@@ -186,9 +218,13 @@
     </svg>
   </div>
 
+  <button class="toggle-mode" id="theme-toggle" aria-label="Toggle Theme">
+    <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+  </button>
+
   <div class="profile-canvas">
     <img src="https://cdn.pixabay.com/photo/2023/11/29/17/51/clouds-8420083_1280.jpg" alt="Avatar" class="avatar">
-    <div class="name">Quân Phan</div>
+    <div class="name">Anh Quân Phan</div>
     <div class="links">
       <a href="https://codeforces.com/profile/andanh3108" target="_blank" class="codeforces">
         <i class="fa-solid fa-code"></i> Codeforces
@@ -204,5 +240,15 @@
       </a>
     </div>
   </div>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      icon.textContent = document.body.classList.contains('light') ? 'light_mode' : 'dark_mode';
+    });
+  </script>
 </body>
 </html>
