@@ -12,7 +12,7 @@
     body {
       min-height: 100vh;
       margin: 0;
-      padding: 0;
+      padding: 32px;
       font-family: 'Inter', 'Montserrat', 'Raleway', 'Baloo Bhaijaan 2', 'Noto Serif', 'Oswald', 'Segoe UI', sans-serif;
       color: white;
       display: flex;
@@ -21,6 +21,7 @@
       background: #232429;
       position: relative;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     .bg-blur {
@@ -52,11 +53,11 @@
       background: rgba(255, 255, 255, 0.18);
       border-radius: 28px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-      padding: 40px 32px 32px 32px;
-      width: 90vw;
+      padding: 40px 32px;
+      width: 100%;
       max-width: 480px;
-      min-width: 280px;
-      margin: 32px;
+      min-width: 260px;
+      margin: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -118,7 +119,6 @@
       color: white;
       padding: 12px 20px;
       border-radius: 16px;
-      /* bo tròn nhỏ hơn */
       transition: 0.3s;
       font-size: 1.1em;
       font-weight: 500;
@@ -173,12 +173,10 @@
   <div class="bg-lines">
     <svg width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="none">
       <g stroke="white" stroke-opacity="0.09" stroke-width="1.5" fill="none">
-        <!-- Các đường chỉ tạo họa tiết /|\|/|\|/|\|/|\ -->
         <polyline points="0,1080 320,540 640,1080 960,540 1280,1080 1600,540 1920,1080" />
         <polyline points="0,0 320,540 640,0 960,540 1280,0 1600,540 1920,0" />
         <polyline points="160,1080 480,540 800,1080 1120,540 1440,1080 1760,540" />
         <polyline points="160,0 480,540 800,0 1120,540 1440,0 1760,540" />
-        <!-- Các đường dọc chia đều -->
         <polyline points="320,0 320,1080" />
         <polyline points="640,0 640,1080" />
         <polyline points="960,0 960,1080" />
@@ -206,16 +204,5 @@
       </a>
     </div>
   </div>
-</body>
-</html>
-</html>
-</body>
-</html>
-        <i class="fab fa-facebook"></i> Facebook
-      </a>
-    </div>
-  </div>
-</body>
-</html>
 </body>
 </html>
